@@ -22,6 +22,9 @@ import math
 
 
 def circle(r, per):
+    """
+    Find perimeter and square of a circle.
+    """
     if per:
         res = 2 * math.pi * r
     else:
@@ -31,6 +34,9 @@ def circle(r, per):
 
 
 def rectangle(w, h, per):
+    """
+    Find perimeter and square of a rectangle.
+    """
     if per:
         res = (w + h) * 2
     else:
@@ -40,6 +46,17 @@ def rectangle(w, h, per):
 
 
 def triangle(a, b, c, per):
+    """
+    Find perimeter and square of a triangle.
+
+    Add ivalid triangle edges sizes
+    """
+    if (a >= b + c or
+        b >= a + c or
+        c >= b + a):
+        print("Invalid triangle edges sizes!")
+        return -1
+
     if per:
         res = a + b + c
     else:
@@ -50,6 +67,9 @@ def triangle(a, b, c, per):
 
 
 def square(a, per):
+    """
+    Find perimeter and square of a square.
+    """
     if per:
         res = a * 4
     else:
@@ -59,6 +79,9 @@ def square(a, per):
 
 
 def get_positive_num(prompt):
+    """
+    Understand are the number is positive and not equal to zero
+    """
     num = -1
     while num <= 0:
         n = input(prompt)
