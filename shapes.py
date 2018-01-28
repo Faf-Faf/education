@@ -24,6 +24,12 @@ import math
 def circle(r, per):
     """
     Find perimeter and square of a circle.
+
+    r - radius
+    per - flag to return a perimeter of the circle
+          if false the square of the cirle returned
+
+    return perimeter or square of the circle depending on per as a float
     """
     if per:
         res = 2 * math.pi * r
