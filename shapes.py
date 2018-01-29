@@ -14,10 +14,85 @@ import math
 # St = a/(1/2)*h
 # Найдем периметр и площадь круга
 # Pc = (3.1415*2)*r
-# Sc = 3.1415*r
+# Sc = 3.1415*r ** 2
 # Найти периметр и площадь квадрата
 # Ps = a*4
 # Ss = a**2
+
+class Shape:
+    def __init__(self):
+        self.name = "Shape"
+
+    def GetPerimeter(self):
+        return -1
+
+    def GetSquare(self):
+        return -1
+
+
+class Circle(Shape):
+
+    def __init__(self, r):
+        self.name = "Circle"
+        self.r = r
+
+    def GetPerimeter(self):
+        return 2 * math.pi * self.r
+
+    def GetSquare(self):
+        return math.pi * (self.r ** 2)
+
+
+class Triangle(Shape):
+
+    def __init__(self, a, b, c):
+        self.name = "Triangle"
+        self.a = a
+        self.b = b
+        self.c = c
+        if (self.a >= self.b + self.c or
+            self.b >= self.a + self.c or
+            self.c >= self.b + self.a):
+            print("Invalid triangle edges sizes!")
+            self.invalid = True
+        else:
+            self.invalid = False
+
+    def GetPerimeter(self):
+        if self.invalid:
+            return -1
+
+        return self.a + self.b + self.c
+
+    def GetSquare(self):
+        if self.invalid:
+            return -1
+        
+        p = (self.a + self.b + self.c) / 2
+
+        return (p * (p - self.a) * (p - self.b) * (p - self.c)) ** 0.5
+
+
+class Rectangle(Shape):
+
+    def __init__(self, w, h):
+        self.name = "Rectangle"
+        self.w = w
+        self.h = h
+    
+    def GetPerimeter(self):
+        return (self.w + self.h) * 2
+
+    def GetSquare(self):
+        return self.w * self.h
+
+
+class Square(Rectangle):
+
+    def __init__(self, a):
+        self.name = "Square"
+        self.w = a
+        self.h = a 
 
 
 
@@ -123,4 +198,18 @@ def main():
         print("Invalid shape code [", sc, "]")
 
 
-main()
+
+def GetDims(shape):
+    print(shape.name, "perimeter is", shape.GetPerimeter(), "square is", shape.GetSquare())
+
+
+
+def mainClass():
+
+    GetDims(Shape())
+    GetDims(Circle(5))
+    GetDims(Triangle(10, 14, 5))
+    GetDims(Rectangle(10, 20))
+    GetDims(Square(10))
+
+mainClass()
